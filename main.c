@@ -56,6 +56,11 @@ int main(void)
 		sprintf(array, "Emma Harrison");
 		LCDSendString(array);
 		
+		if (!decision)
+		{
+			decision = 0;
+		}
+		
 		 //0 -> STOP
 		 //1 -> FORWARD
 		 //2 -> TURN RIGHT
@@ -77,33 +82,55 @@ int main(void)
 		}
 		else if(decision == '1') //FORWARD
 		{
-			lspeed = 75;
-			rspeed = 75;
+			lspeed = 40;
+			rspeed = 40;
 			
 			HBridgeCommand(left,lspeed,forward);
 			//_delay_ms(1000);
 			HBridgeCommand(right,rspeed,forward);
 			_delay_ms(10);
 		}
-		else if(decision == '2') //TURN RIGHT
+		else if(decision == '3') //TURN RIGHT
 		{
-			lspeed = 75;
-			rspeed = 60;
+			lspeed = 45;//65;
+			rspeed = 0;//30;
 			
 			HBridgeCommand(left,lspeed,forward);
 			//_delay_ms(1000);
 			HBridgeCommand(right,rspeed,forward);
 			_delay_ms(10);
 		}
-		else if(decision == '3') //TURN LEFT
+		else if(decision == '2') //TURN LEFT
 		{
-			lspeed = 60;
-			rspeed = 75;
+			lspeed = 0;//30;
+			rspeed = 45;//65;
 			
 			HBridgeCommand(left,lspeed,forward);
 			//_delay_ms(1000);
 			HBridgeCommand(right,rspeed,forward);
 			_delay_ms(10);			
+		}
+		else if(decision == '5') //more left
+		{
+			lspeed = 5;//20;
+			rspeed = 65;
+			
+			HBridgeCommand(left,lspeed,forward);
+			//_delay_ms(1000);
+			HBridgeCommand(right,rspeed,forward);
+			_delay_ms(10);
+			
+		}
+		else if(decision == '4') //more right
+		{
+			lspeed = 65;
+			rspeed = 5;//20;
+			
+			HBridgeCommand(left,lspeed,forward);
+			//_delay_ms(1000);
+			HBridgeCommand(right,rspeed,forward);
+			_delay_ms(10);
+			
 		}
 		
     }
