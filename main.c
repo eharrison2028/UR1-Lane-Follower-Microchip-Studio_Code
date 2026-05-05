@@ -48,6 +48,7 @@ int main(void)
 	uint8_t rspeed; 
 	uint8_t forward = 0;
 	uint8_t reverse = 1;
+	uint8_t flag = 0;
     /* Replace with your application code */
     while (1) 
     {
@@ -82,8 +83,8 @@ int main(void)
 		}
 		else if(decision == '1') //FORWARD
 		{
-			lspeed = 40;
-			rspeed = 40;
+			lspeed = 45;
+			rspeed = 45;
 			
 			HBridgeCommand(left,lspeed,forward);
 			//_delay_ms(1000);
@@ -92,7 +93,7 @@ int main(void)
 		}
 		else if(decision == '3') //TURN RIGHT
 		{
-			lspeed = 45;//65;
+			lspeed = 35;//65;
 			rspeed = 0;//30;
 			
 			HBridgeCommand(left,lspeed,forward);
@@ -103,7 +104,7 @@ int main(void)
 		else if(decision == '2') //TURN LEFT
 		{
 			lspeed = 0;//30;
-			rspeed = 45;//65;
+			rspeed = 35;//65;
 			
 			HBridgeCommand(left,lspeed,forward);
 			//_delay_ms(1000);
@@ -112,7 +113,7 @@ int main(void)
 		}
 		else if(decision == '5') //more left
 		{
-			lspeed = 5;//20;
+			lspeed = 0;//20;
 			rspeed = 65;
 			
 			HBridgeCommand(left,lspeed,forward);
@@ -124,12 +125,38 @@ int main(void)
 		else if(decision == '4') //more right
 		{
 			lspeed = 65;
-			rspeed = 5;//20;
+			rspeed = 0;//20;
 			
 			HBridgeCommand(left,lspeed,forward);
 			//_delay_ms(1000);
 			HBridgeCommand(right,rspeed,forward);
 			_delay_ms(10);
+			
+		}
+		else if(decision = '8') //else case
+		{
+			lspeed = 25;
+			rspeed = 25;//20;
+			
+			HBridgeCommand(left,lspeed,forward);
+			//_delay_ms(1000);
+			HBridgeCommand(right,rspeed,forward);
+			_delay_ms(10);
+			
+		}
+		else if(decision = '9')//detect red line case
+		{
+			
+			lspeed = 0; //just stop. you're at the red line
+			rspeed = 0;//20;
+				
+			HBridgeCommand(left,lspeed,forward);
+			//_delay_ms(1000);
+			HBridgeCommand(right,rspeed,forward);
+			_delay_ms(1000);
+			
+			
+			//up to date
 			
 		}
 		
